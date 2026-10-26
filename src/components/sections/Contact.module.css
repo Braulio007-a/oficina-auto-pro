@@ -1,0 +1,94 @@
+.section {
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  background: var(--red);
+  color: var(--white);
+}
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--step-3);
+  font-style: italic;
+  font-weight: 800;
+  max-width: 14ch;
+}
+
+.lead {
+  margin-top: 1rem;
+  max-width: 42ch;
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.number {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.number:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+
+.note {
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* On red, the primary button flips to black so it doesn't disappear. */
+.actions :global(.btn-primary) {
+  background: var(--asphalt);
+}
+
+.actions :global(.btn-primary:hover) {
+  background: var(--asphalt-2);
+}
+
+.actions :global(.btn-ghost:hover) {
+  color: var(--red-dark);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.section :focus-visible {
+  outline-color: var(--white);
+}
+
+@media (min-width: 60rem) {
+  .grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .actions :global(.btn) {
+    width: 100%;
+  }
+}

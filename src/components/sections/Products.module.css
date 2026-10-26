@@ -1,0 +1,126 @@
+.section {
+  background: var(--porcelain);
+  color: var(--text-on-light);
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+}
+
+.intro {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.title {
+  font-size: var(--step-3);
+  font-style: italic;
+  font-weight: 800;
+  max-width: 12ch;
+}
+
+.facts {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.facts div {
+  padding-left: 1rem;
+  border-left: 3px solid var(--red);
+}
+
+.facts dt {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.facts dd {
+  color: var(--muted-on-light);
+}
+
+.grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: clamp(2rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);
+}
+
+.frame {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--primer);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.item:hover .photo {
+  transform: scale(1.03);
+}
+
+.name {
+  margin-top: 1rem;
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.text {
+  margin-top: 0.35rem;
+  max-width: 40ch;
+  color: var(--muted-on-light);
+}
+
+.extras {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(22 22 24 / 0.15);
+  font-size: var(--step-1);
+}
+
+@media (min-width: 48rem) {
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 60rem) {
+  .intro {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    align-items: end;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    grid-template-rows: auto auto;
+  }
+
+  .item:first-child {
+    grid-row: span 2;
+  }
+
+  .item:first-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item:first-child .frame {
+    position: relative;
+    flex: 1;
+    min-height: 24rem;
+  }
+
+  .item:first-child .photo {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+  }
+
+  .item:not(:first-child) .photo {
+    aspect-ratio: 16 / 9;
+  }
+}

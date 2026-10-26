@@ -1,0 +1,145 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--asphalt) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: 1px solid rgb(255 255 255 / 0.25);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.nav {
+  display: none;
+}
+
+.header[data-open="true"] .nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: absolute;
+  inset: 100% 0 auto;
+  height: calc(100dvh - var(--header-h));
+  padding: 1.5rem var(--gutter) 2rem;
+  background: var(--asphalt);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav li a {
+  display: block;
+  padding: 0.85rem 0;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  transition: color 0.2s ease;
+}
+
+.nav li a:hover {
+  color: var(--red);
+}
+
+@media (min-width: 60rem) {
+  .toggle {
+    display: none;
+  }
+
+  .nav,
+  .header[data-open="true"] .nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    height: auto;
+    padding: 0;
+    background: none;
+    overflow: visible;
+  }
+
+  .nav ul {
+    flex-direction: row;
+    gap: 1.75rem;
+  }
+
+  .nav li a {
+    position: relative;
+    padding: 0.25rem 0;
+    font-size: 1.15rem;
+    border: 0;
+  }
+
+  .nav li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.1rem;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .nav li a:hover {
+    color: inherit;
+  }
+
+  .nav li a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .cta {
+    min-height: 2.75rem;
+    padding-block: 0.5rem;
+  }
+}

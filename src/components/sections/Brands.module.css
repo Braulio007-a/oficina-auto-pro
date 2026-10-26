@@ -1,0 +1,82 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  background: var(--primer);
+  overflow: hidden;
+}
+
+/* The grey-primer Classe G kit, darkened so text stays readable. */
+.backdrop {
+  z-index: -1;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: grayscale(1) brightness(0.32);
+}
+
+.inner {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.title {
+  font-size: var(--step-3);
+  font-style: italic;
+  font-weight: 800;
+  max-width: 16ch;
+}
+
+.lead {
+  max-width: 46ch;
+  color: var(--muted-on-dark);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  display: grid;
+  border-top: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.9rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+}
+
+.models {
+  color: var(--muted-on-dark);
+}
+
+@media (min-width: 60rem) {
+  .inner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 4rem;
+    align-items: start;
+  }
+
+  .title,
+  .lead {
+    grid-column: 1;
+  }
+
+  .list {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0;
+  }
+}
